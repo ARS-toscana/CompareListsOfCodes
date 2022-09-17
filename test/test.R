@@ -27,8 +27,8 @@ setwd("..")
 dirbase<-getwd()
 
 #Example 1
-listA <- c('410','412') #romin list
-listB <- c('4101','413')  #gepard list
+listA <- c('410', '412', '4131', '411') #romin list
+listB <- c('410.1', '413', '410', '41', '41123', '414')  #gepard list
 
 source(paste0(dirbase,"/CompareListsOfCodes.R"))
 
@@ -36,28 +36,32 @@ output <- CompareListsOfCodes(
   concept_set_A = listA,
   concept_set_B = listB
 )
+output
 
-#output is the list c('413')
+#output is the list c('413', '41', '414')
 
 
 #-----------------------------------------------------
 #Example 2
 listA <- vector(mode="list")
-listA[['ICD9']] = c('410','412')
+listA[['ICD9']] = c('410', '412', '4131', '411')
+listA[['ICD10']] = c('I20', 'I21')
+listB[['READ']] = c('AAA', 'CCC', '111', '333')
 
 listB <- vector(mode="list")
-listB[['ICD9']] = c('410.1','413')
-listB[['ICD10']] = c('I20.0','I21')
+listB[['ICD9']] = c('410.1', '413', '410', '41', '41123', '414')
+listB[['ICD10']] = c('I20.0', 'I2012', 'I22', 'I21', 'I2')
+listB[['SNOMED']] = c('AAA', 'BBB', '111', '222')
 
 output <- CompareListsOfCodes(
   concept_set_A = listA,
   concept_set_B = listB,
   multi=T
 )
-
+output
 
 # #output is the following list:
 # 
-# output[['ICD9']] = c('413')
-# output[['ICD10']] = c('I20.0','I21')
-
+# output[['ICD9']] = c('413', '41', '414')
+# output[['ICD10']] = c('I22','I2')
+# output[['SNOMED']] = c('AAA','BBB', '111', '222')
