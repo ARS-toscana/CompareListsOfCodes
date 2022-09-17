@@ -31,7 +31,7 @@ CompareListsOfCodes<- function(concept_set_A ,  # dataset romin
         }
         
         temp[[voc]]<-!temp[[voc]]
-        print( temp[[voc]])
+        # print( temp[[voc]])
         final[[voc]]<-concept_set_B[[voc]][temp[[voc]]]
 
       }else {
